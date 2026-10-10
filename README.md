@@ -81,3 +81,46 @@ uv sync --project app --active
 La opción `--project app` indica dónde está el `pyproject.toml`.
 
 La opción `--active` indica a `uv` que utilice el entorno virtual activo.
+
+## 5. Agregar nuevas dependencias
+
+Para añadir una biblioteca, utiliza `uv add`.
+
+Por ejemplo, para agregar Pandas:
+
+```bash
+uv add --project app --active --no-sync pandas
+```
+
+Después, instala o sincroniza las dependencias:
+
+```bash
+uv sync --project app --active
+```
+
+## 6. Actualizar las dependencias
+
+Para actualizar las dependencias según las restricciones declaradas en `pyproject.toml`, puedes utilizar:
+
+```bash
+uv lock --project app --upgrade
+uv sync --project app --active
+```
+
+## 7. Eliminar una dependencia
+
+Para quitar una biblioteca del proyecto:
+
+```bash
+uv remove --project app --active pandas
+```
+
+Si necesitas volver a sincronizar el entorno:
+
+```bash
+uv sync --project app --active
+```
+
+## 8. Ejecutar los tests
+
+python3 -m tests.db_connection
